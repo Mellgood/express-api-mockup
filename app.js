@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const postsRoute = require('./routes/posts')
 const cors = require('cors')
 require('dotenv/config')
+
+const postsRoute = require('./routes/posts')
+const authRoute = require('./routes/auth')
 
 
 
@@ -13,6 +15,7 @@ require('dotenv/config')
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/posts', postsRoute)
+app.use('/auth', authRoute)
 
 //routes
 app.get('/', (req, res) => {
